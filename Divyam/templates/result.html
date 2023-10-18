@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text Detection Result</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #87CEEB, #0071a4); /* Sky blue gradient */
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333; /* Header text color */
+        }
+
+        h2 {
+            color: #333; /* Subheader text color */
+        }
+
+        img {
+            display: block;
+            margin: 20px auto; /* Center the image */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        textarea {
+            display: block;
+            margin: 20px auto; /* Center the textarea */
+            width: 80%;
+            max-width: 600px; /* Limit the width */
+            padding: 10px;
+            border: 2px solid #3498db; /* Textarea border color */
+            background-color: #fff; /* Textarea background color */
+            border-radius: 5px;
+        }
+
+        button.copy-button {
+            background-color: #3498db; /* Button background color */
+            color: #fff; /* Button text color */
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Text Detection Result</h1>
+    <img src="data:image/jpeg;base64,{{ img_base64 }}" alt="Processed Image">
+    
+    <h2>Detected Text:</h2>
+    <textarea id="detected-text" readonly rows="10" cols="50">{{ detected_text }}</textarea>
+    <button class="copy-button" onclick="copyText()">Copy Text</button>
+
+    <script>
+        function copyText() {
+            var textArea = document.getElementById('detected-text');
+            textArea.select();
+            document.execCommand('copy');
+        }
+    </script>
+</body>
+</html>
